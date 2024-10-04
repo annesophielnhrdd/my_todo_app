@@ -10,9 +10,11 @@ const AddTask = ({ task, setTask, handleCreateTask }: AddTaskProps) => {
       <div className="flex space-x-4">
         <Input
           className="flex bg-pink-200 w-96"
-          placeholder="Ajouter une tache"
+          placeholder="Ajouter une nouvelle tache"
+          onChange={(e) => setTask(e.target.value)}
+          value={task}
         />
-        <Button className="bg-pink-400">
+        <Button className="bg-pink-400" onClick={() => handleCreateTask}>
           <CirclePlus className="flex items-stretch" />
         </Button>
       </div>
