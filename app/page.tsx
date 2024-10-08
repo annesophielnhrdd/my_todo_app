@@ -7,6 +7,7 @@ import AddTask from "@/components/AddTask";
 import { BarLoader } from "react-spinners";
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
+import NoTask from "@/components/NoTask";
 
 export default function Home() {
   const [task, setTask] = useState("");
@@ -58,7 +59,9 @@ export default function Home() {
         handleCreateTask={handleCreateTask}
       />
       {isLoading ? (
-        <BarLoader />
+        <div className="flex justify-center items-center pt-20">
+          <BarLoader color="#EC4899" height={10} width={200} />
+        </div>
       ) : (
         <div className="flex flex-wrap justify-center gap-5 pt-10 max-w-3xl mx-auto">
           {allTasks.length > 0 ? (
@@ -68,7 +71,7 @@ export default function Home() {
               </Card>
             ))
           ) : (
-            <p>No Task</p>
+            <NoTask />
           )}
         </div>
       )}
