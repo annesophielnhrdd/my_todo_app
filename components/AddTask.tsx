@@ -14,7 +14,7 @@ const AddTask = ({ task, setTask, handleCreateTask }: AddTaskProps) => {
           onChange={(e) => setTask(e.target.value)}
           value={task}
         />
-        <Button className="bg-pink-400" onClick={() => handleCreateTask}>
+        <Button className="bg-pink-400" onClick={() => handleCreateTask()}>
           <CirclePlus className="flex items-stretch" />
         </Button>
       </div>
