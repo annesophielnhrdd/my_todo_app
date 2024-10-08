@@ -1,9 +1,12 @@
 "use client";
 import React, { useEffect } from "react";
 
+import { ITask } from "@/types";
 import Header from "@/components/Header";
 import AddTask from "@/components/AddTask";
+import { BarLoader } from "react-spinners";
 import { useState } from "react";
+import { Card } from "@/components/ui/card";
 
 export default function Home() {
   const [task, setTask] = useState("");
@@ -54,6 +57,21 @@ export default function Home() {
         setTask={setTask}
         handleCreateTask={handleCreateTask}
       />
+      {isLoading ? (
+        <BarLoader />
+      ) : (
+        <div className="flex flex-wrap justify-center gap-5 pt-10 max-w-3xl mx-auto">
+          {allTasks.length > 0 ? (
+            allTasks.map((individualTask: ITask) => (
+              <Card className="flex justify-center items-center w-64 h-20 flex-grow text-pink-500 border-pink-200 bg-pink-100">
+                {individualTask.task}
+              </Card>
+            ))
+          ) : (
+            <p>No Task</p>
+          )}
+        </div>
+      )}
     </>
   );
 }
